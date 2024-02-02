@@ -9,11 +9,9 @@ type GetOneUserController struct {
 	service *GetOneUserService
 }
 
-type SuccessResponse struct {
-	User UserDTO
-}
+
 type ErrorResponse struct {
-	Message string
+	Message string `json:"message"`
 }
 
 func (controller *GetOneUserController) Handle(ctx *fiber.Ctx) error {
@@ -26,11 +24,9 @@ func (controller *GetOneUserController) Handle(ctx *fiber.Ctx) error {
 		return ctx.Status(404).JSON(response)
 	}
 
-	response := SuccessResponse{
-		User: user,
-	}
 
-	return ctx.Status(200).JSON(response)
+
+	return ctx.Status(200).JSON(user)
 }
 
 func NewGetOneUserController(service *GetOneUserService) global.Controller {
