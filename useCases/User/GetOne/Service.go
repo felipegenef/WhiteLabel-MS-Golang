@@ -2,13 +2,20 @@ package getOneUser
 
 
 
-type GetOneUserService struct{}
+type GetOneUserService struct{
+	UserRepository GetOneUserRepository
+}
 
 func (c *GetOneUserService) Execute(id string) (UserDTO,error) {
-	var user= NewUserDTO(id,"Jhon")
+	var user,err= c.UserRepository.FindOne(id);
+	if err !=nil{
+		return user,err
+	}
 	return user,nil
 }
 
-func NewGetOneUserService() GetOneUserService{
-	return GetOneUserService{}
+func NewGetOneUserService(userRepository GetOneUserRepository) GetOneUserService{
+	return GetOneUserService{
+		UserRepository: userRepository,
+	}
 }

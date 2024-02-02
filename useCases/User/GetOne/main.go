@@ -1,4 +1,5 @@
 package getOneUser
 
-var service = NewGetOneUserService()
+var repository = NewGetOneUserRepository()
+var service = NewGetOneUserService(repository)
 var Controller = NewGetOneUserController(service)
