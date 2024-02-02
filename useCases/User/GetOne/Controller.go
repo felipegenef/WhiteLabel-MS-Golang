@@ -1,7 +1,7 @@
 package getOneUser
 
 import (
-	global "example.com/goLangMicroservice/Global"
+	global "example.com/goLangMicroservice/Global/Interfaces"
 	"github.com/gofiber/fiber/v2"
 )
 
