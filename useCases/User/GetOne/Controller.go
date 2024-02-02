@@ -1,11 +1,12 @@
 package getOneUser
 
 import (
+	global "example.com/goLangMicroservice/Global"
 	"github.com/gofiber/fiber/v2"
 )
 
 type GetOneUserController struct {
-	service GetOneUserService
+	service *GetOneUserService
 }
 
 type SuccessResponse struct {
@@ -32,8 +33,8 @@ func (controller *GetOneUserController) Handle(ctx *fiber.Ctx) error {
 	return ctx.Status(200).JSON(response)
 }
 
-func NewGetOneUserController(service GetOneUserService) GetOneUserController {
-	return GetOneUserController{
+func NewGetOneUserController(service *GetOneUserService) global.Controller {
+	return &GetOneUserController{
 		service,
 	}
 }

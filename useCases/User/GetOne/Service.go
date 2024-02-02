@@ -3,8 +3,9 @@ package getOneUser
 
 
 type GetOneUserService struct{
-	UserRepository GetOneUserRepository
+	UserRepository IGetOneUserRepository
 }
+
 
 func (c *GetOneUserService) Execute(id string) (UserDTO,error) {
 	var user,err= c.UserRepository.FindOne(id);
@@ -14,8 +15,9 @@ func (c *GetOneUserService) Execute(id string) (UserDTO,error) {
 	return user,nil
 }
 
-func NewGetOneUserService(userRepository GetOneUserRepository) GetOneUserService{
-	return GetOneUserService{
+func NewGetOneUserService(userRepository IGetOneUserRepository) *GetOneUserService{
+	
+	return &GetOneUserService{
 		UserRepository: userRepository,
 	}
 }
