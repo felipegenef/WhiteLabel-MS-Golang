@@ -12,7 +12,7 @@ ENV GOPATH=""
 RUN GOOS=linux go build -o ./main main.go
 
 # Start lambda container from fresh image 
-FROM golang:alpine
+FROM alpine
 
 
 WORKDIR "/var/task"
