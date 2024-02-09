@@ -16,3 +16,9 @@ When developig a serverless Architecture, you can use this infrastructure as a L
 ```bash
 go test ./useCases...
 ```
+
+## Add new useCase
+
+```bash
+go run CLI/generateUseCase.go
+```
